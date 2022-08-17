@@ -19,6 +19,16 @@ function App() {
 		setBookings(copyArr);
 	};
 
+	const updateBookingCheckIn = (_id, updatedCheckIn) => {
+		const updatedBookingIndex = bookings.findIndex(
+			(booking) => booking._id === _id
+		);
+		const updatedBookings = [...bookings];
+
+		updatedBookings[updatedBookingIndex].checkedIn = !updatedCheckIn;
+		setBookings(updatedBookings);
+	};
+
 	const deleteBookingState = (index) => {
 		const copyArr = [...bookings];
 		copyArr.splice(index, 1);
@@ -33,6 +43,7 @@ function App() {
 				<BookingContainer
 					bookings={bookings}
 					deleteBookingState={deleteBookingState}
+					updateBookingCheckIn={updateBookingCheckIn}
 				/>
 			)}
 		</div>

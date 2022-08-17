@@ -1,14 +1,18 @@
-import React from "react";
 import { deleteBooking } from "../bookingsServices";
 import { updateBooking } from "../bookingsServices";
 
-const BookingContainer = ({ bookings, deleteBookingState }) => {
+const BookingContainer = ({
+	bookings,
+	deleteBookingState,
+	updateBookingCheckIn,
+}) => {
 	const handleClick = (_id, index) => {
 		deleteBooking(_id).then(() => deleteBookingState(index));
 	};
 
 	const handleCheckIn = (_id, checkedIn) => {
 		updateBooking(_id, !checkedIn);
+		updateBookingCheckIn(_id, checkedIn);
 	};
 
 	const bookingNodes = bookings.map((booking, index) => {

@@ -14,7 +14,7 @@ export const postBooking = (newBooking) => {
 
 export const deleteBooking = (_id) => {
 	return fetch(baseURL + _id, {
-		method: "Delete",
+		method: "DELETE",
 	});
 };
 
@@ -23,9 +23,8 @@ export const updateBooking = (_id, checkedIn) => {
 		method: "PUT",
 		body: JSON.stringify({ checkedIn }),
 		headers: { "Content-Type": "application/json" },
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-		});
+	}).then((res) => res.json());
+	// .then((data) => {
+	// 	console.log(data);
+	// });
 };
